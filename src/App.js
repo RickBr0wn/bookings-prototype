@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import Header from './Components/Header'
 import FastBooking from './Components/FastBooking'
+import AppointmentList from './Components/AppointmentList'
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -25,6 +26,7 @@ function App() {
         <CssBaseline />
         <Header />
         <FastBooking />
+        <AppointmentList />
       </ThemeProvider>
     </div>
   )

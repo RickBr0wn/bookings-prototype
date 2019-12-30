@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   text: { marginBottom: theme.spacing(4) },
 }))
 
-const FastBooking = props => {
+const FastBooking = () => {
   const classes = useStyles()
   return (
     <Container className={classes.space}>
@@ -34,7 +33,5 @@ const FastBooking = props => {
     </Container>
   )
 }
-
-FastBooking.propTypes = {}
 
 export default FastBooking
