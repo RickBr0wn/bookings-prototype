@@ -4,8 +4,11 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import Header from './Components/Header'
-import FastBooking from './Components/FastBooking'
+import Login from './Components/Login'
+import ButtonAppBar from './Components/ButtonAppBar'
 import AppointmentList from './Components/AppointmentList'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { UseFirebaseAuthProvider } from './config/useFirebaseAuth'
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -21,14 +24,25 @@ function App() {
   )
 
   return (
-    <div>
+    <UseFirebaseAuthProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header />
-        <FastBooking />
-        <AppointmentList />
+        <Router>
+          <ButtonAppBar />
+          <Switch>
+            <Route path="/appointment-list">
+              <AppointmentList />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/">
+              <Header />
+            </Route>
+          </Switch>
+        </Router>
       </ThemeProvider>
-    </div>
+    </UseFirebaseAuthProvider>
   )
 }
 

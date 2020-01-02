@@ -6,13 +6,12 @@ import Paper from '@material-ui/core/Paper'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
-import useFirebaseAuth from '../config/useFirebaseAuth'
 import useGetFirestoreCollection from '../config/useGetFirestoreCollection'
-import firebase from '../config/firebase'
+import useFirebaseAuth from '../config/useFirebaseAuth'
 
 const useStyles = makeStyles(theme => ({
   top: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(12),
   },
   paper: { padding: theme.spacing(5) },
   formControl: {
@@ -26,15 +25,11 @@ const useStyles = makeStyles(theme => ({
 
 const AppointmentList = () => {
   const classes = useStyles()
+  const { user } = useFirebaseAuth()
 
   const [appointments, error, isLoading] = useGetFirestoreCollection(
     'appointments'
   )
-
-  // const { user, login, logout } = useFirebaseAuth()
-  // console.log({ user })
-  // login('test@test.com', 'testpassword')
-  // console.log({ user })
 
   const [state, setState] = React.useState({
     age: '',
@@ -48,7 +43,15 @@ const AppointmentList = () => {
     })
   }
 
-  console.log({ appointments })
+  if (!user) {
+    return (
+      <Container className={classes.top}>
+        <Paper>
+          <Typography>Please log in</Typography>
+        </Paper>
+      </Container>
+    )
+  }
 
   return (
     <Container align="center" className={classes.top}>
