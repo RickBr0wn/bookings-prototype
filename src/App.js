@@ -7,6 +7,7 @@ import Header from './Components/Header'
 import Login from './Components/Login'
 import ButtonAppBar from './Components/ButtonAppBar'
 import AppointmentList from './Components/AppointmentList'
+import CreateAppointment from './Components/CreateAppointment'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { UseFirebaseAuthProvider } from './config/useFirebaseAuth'
 import firebase from './config/firebase'
@@ -31,6 +32,9 @@ function App() {
         <Router>
           <ButtonAppBar />
           <Switch>
+            <Route path="/create-appointment">
+              <CreateAppointment />
+            </Route>
             <Route path="/appointment-list">
               <AppointmentList />
             </Route>
