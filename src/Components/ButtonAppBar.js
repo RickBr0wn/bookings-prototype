@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home'
 import EventNoteIcon from '@material-ui/icons/EventNote'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import AlarmAddIcon from '@material-ui/icons/AlarmAdd'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,6 +47,11 @@ export default function ButtonAppBar() {
           <Tooltip title="Appointments">
             <Link className={classes.links} to="/appointment-list">
               <EventNoteIcon />
+            </Link>
+          </Tooltip>
+          <Tooltip title="Make Appointment">
+            <Link className={classes.links} to="/create-appointment">
+              <AlarmAddIcon />
             </Link>
           </Tooltip>
           <Tooltip title="Account">
