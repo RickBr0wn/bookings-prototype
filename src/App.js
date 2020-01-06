@@ -9,6 +9,7 @@ import ButtonAppBar from './Components/ButtonAppBar'
 import AppointmentList from './Components/AppointmentList'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { UseFirebaseAuthProvider } from './config/useFirebaseAuth'
+import firebase from './config/firebase'
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -24,7 +25,7 @@ function App() {
   )
 
   return (
-    <UseFirebaseAuthProvider>
+    <UseFirebaseAuthProvider firebase={firebase}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>

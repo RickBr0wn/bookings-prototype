@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Background from '../images/barbershop.png'
 import Logo from '../images/barberLogo.png'
 import FastBooking from './FastBooking'
+import useGeoLocation from '../config/useLocationData'
 
 const useStyles = makeStyles(theme => ({
   image: {
@@ -39,6 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles()
+  const [latitude, longitude] = useGeoLocation()
   return (
     <Container className={classes.top}>
       <Paper className={classes.paperContainer}>
